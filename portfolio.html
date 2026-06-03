@@ -693,6 +693,59 @@ footer{
 .lang-cpp{background:#F34B7D}.lang-cs{background:#178600}.lang-php{background:#4F5D95}
 .lang-swift{background:#FA7343}.lang-kotlin{background:#A97BFF}.lang-dart{background:#00B4AB}
 .lang-default{background:#8C8278}
+/* ── CV DOWNLOAD BUTTON ── */
+.cv-download-btn {
+  display: inline-flex; align-items: center; gap: .55rem;
+  background: transparent;
+  border: 1.5px solid rgba(200,150,42,.5);
+  color: var(--gold2);
+  padding: .55rem 1.2rem;
+  border-radius: var(--r);
+  font-family: 'Outfit', sans-serif;
+  font-size: .8rem; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase;
+  cursor: pointer; text-decoration: none;
+  transition: all .25s; white-space: nowrap; flex-shrink: 0;
+}
+.cv-download-btn:hover {
+  background: rgba(200,150,42,.12);
+  border-color: var(--gold2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(200,150,42,.2);
+}
+.cv-download-btn svg {
+  width: 14px; height: 14px;
+  stroke: currentColor; fill: none; stroke-width: 2.2;
+  flex-shrink: 0; transition: transform .25s;
+}
+.cv-download-btn:hover svg { transform: translateY(2px); }
+
+/* Floating CV button */
+.cv-fab {
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 90;
+  display: flex; align-items: center; gap: .55rem;
+  background: var(--gold); color: var(--bg);
+  padding: .75rem 1.4rem; border-radius: 100px;
+  font-family: 'Outfit', sans-serif;
+  font-size: .82rem; font-weight: 800;
+  letter-spacing: .06em; text-transform: uppercase;
+  text-decoration: none; cursor: pointer;
+  box-shadow: 0 8px 28px rgba(200,150,42,.35);
+  transition: all .25s; border: none;
+}
+.cv-fab:hover {
+  background: var(--gold2);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(200,150,42,.45);
+}
+.cv-fab svg {
+  width: 16px; height: 16px;
+  stroke: currentColor; fill: none; stroke-width: 2.5;
+  transition: transform .25s;
+}
+.cv-fab:hover svg { transform: translateY(2px); }
+body.light .cv-fab { background: var(--rust); color: white; }
+body.light .cv-fab:hover { background: var(--rust2); }
 </style>
 </head>
 <body>
@@ -710,6 +763,16 @@ footer{
     <li><a href="#education">Education</a></li>
     <li><a href="#certificates">Certs</a></li>
     <li><a href="#contact" class="nav-hire">Hire Me</a></li>
+    <li>
+  <button class="cv-download-btn" onclick="downloadCV()">
+    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+      <polyline points="7 10 12 15 17 10"/>
+      <line x1="12" y1="15" x2="12" y2="3"/>
+    </svg>
+    Download CV
+  </button>
+</li>
   </ul>
   <div style="display:flex;align-items:center;gap:1rem">
     <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle light/dark mode" aria-label="Toggle theme">
@@ -718,6 +781,7 @@ footer{
     <div class="nav-toggle" id="navToggle" onclick="toggleNav()">
       <span></span><span></span><span></span>
     </div>
+    
   </div>
 </nav>
 
@@ -944,7 +1008,7 @@ footer{
 
   
 
-    <!-- PROJECT 3 -->
+    <!-- PROJECT 2 -->
     <div class="proj-card">
       <div class="proj-img">
         <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80" alt="Web App">
@@ -974,11 +1038,11 @@ footer{
       </div>
       <div class="proj-foot">
         <div class="proj-foot-links">
-          <a href="https://your-project.vercel.app" target="_blank" class="pfl">
+          <a href="https://thunderous-churros-c5b831.netlify.app/" target="_blank" class="pfl">
             <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             Live on Vercel
           </a>
-          <a href="https://github.com/your-username/project" target="_blank" class="pfl">
+          <a href="https://github.com/LorraineTech/my-portfolio.git" target="_blank" class="pfl">
             <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
             GitHub
           </a>
@@ -987,118 +1051,41 @@ footer{
       </div>
     </div>
 
-    <!-- PROJECT 4 -->
+    <!-- PROJECT 3 -->
     <div class="proj-card">
       <div class="proj-img">
-        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80" alt="Mobile App">
-        <span class="proj-cat">UI/UX Design</span>
+        <img src="rw.jpg" alt="Web system">
+        <span class="proj-cat">Website</span>
         <div class="proj-img-links">
-          <a href="https://your-project.vercel.app" target="_blank" class="proj-img-link pil-live">
+          <a href="https://l3sod-qelc.vercel.app/" target="_blank" class="proj-img-link pil-live">
             <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            View Prototype
+            View on Vercel
           </a>
         </div>
       </div>
       <div class="proj-body">
         <div class="proj-head">
-          <div class="proj-name">Mobile App UI Kit</div>
+          <div class="proj-name">TEMBERE U RWANDA</div>
           <div class="proj-year">2024</div>
         </div>
-        <div class="proj-desc">A comprehensive UI kit for a fintech mobile app — onboarding flows, dashboards, transaction screens, and a full component library.</div>
+        <div class="proj-desc">A full working website for tourist and any other users that would like to explore Rwanda.</div>
         <div class="proj-tags">
           <span class="proj-tag">Figma</span>
-          <span class="proj-tag">Mobile</span>
+          <span class="proj-tag">Website</span>
           <span class="proj-tag">Fintech</span>
         </div>
       </div>
       <div class="proj-foot">
         <div class="proj-foot-links">
-          <a href="https://your-project.vercel.app" target="_blank" class="pfl">
+          <a href="https://l3sod-qelc.vercel.app/" target="_blank" class="pfl">
             <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Figma Prototype
+            View on Vercel
           </a>
         </div>
-        <span class="proj-foot-type">Mobile UI</span>
+        <span class="proj-foot-type">Website</span>
       </div>
     </div>
 
-    <!-- PROJECT 5 -->
-    <div class="proj-card">
-      <div class="proj-img">
-        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Web Design">
-        <span class="proj-cat">Development</span>
-        <div class="proj-img-links">
-          <a href="https://your-project.vercel.app" target="_blank" class="proj-img-link pil-live">
-            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Live Demo
-          </a>
-          <a href="https://github.com/your-username/project" target="_blank" class="proj-img-link pil-src">
-            <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-            Source
-          </a>
-        </div>
-      </div>
-      <div class="proj-body">
-        <div class="proj-head">
-          <div class="proj-name">Analytics Web App</div>
-          <div class="proj-year">2025</div>
-        </div>
-        <div class="proj-desc">A data visualization web app for tracking business KPIs in real time, with interactive charts and exportable PDF reports.</div>
-        <div class="proj-tags">
-          <span class="proj-tag">React</span>
-          <span class="proj-tag">Chart.js</span>
-          <span class="proj-tag">Node.js</span>
-        </div>
-      </div>
-      <div class="proj-foot">
-        <div class="proj-foot-links">
-          <a href="https://your-project.vercel.app" target="_blank" class="pfl">
-            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Live on Vercel
-          </a>
-          <a href="https://github.com/your-username/project" target="_blank" class="pfl">
-            <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-            GitHub
-          </a>
-        </div>
-        <span class="proj-foot-type">Web App</span>
-      </div>
-    </div>
-
-    <!-- PROJECT 6 -->
-    <div class="proj-card">
-      <div class="proj-img">
-        <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800&q=80" alt="Social Media Design">
-        <span class="proj-cat">Graphic Design</span>
-        <div class="proj-img-links">
-          <a href="https://your-project.vercel.app" target="_blank" class="proj-img-link pil-live">
-            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            View Project
-          </a>
-        </div>
-      </div>
-      <div class="proj-body">
-        <div class="proj-head">
-          <div class="proj-name">Social Media Campaign</div>
-          <div class="proj-year">2025</div>
-        </div>
-        <div class="proj-desc">A complete social media design campaign for a fashion brand — 30+ posts, stories, highlight covers, and animated reels assets.</div>
-        <div class="proj-tags">
-          <span class="proj-tag">Photoshop</span>
-          <span class="proj-tag">Canva</span>
-          <span class="proj-tag">Social Media</span>
-        </div>
-      </div>
-      <div class="proj-foot">
-        <div class="proj-foot-links">
-          <a href="https://your-project.vercel.app" target="_blank" class="pfl">
-            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            View on Behance
-          </a>
-        </div>
-        <span class="proj-foot-type">Campaign</span>
-      </div>
-    </div>
 
   </div>
 </section>
@@ -1406,6 +1393,23 @@ window.addEventListener('scroll', () => {
   document.querySelector('.hbc1').style.transform = `translateY(${y * .12}px)`;
   document.querySelector('.hbc2').style.transform = `translateY(${-y * .08}px)`;
 });
+// ── CV DOWNLOAD ──
+const CV_DATA = 'UEsDBAoAA...'; // ← long base64 string (your CV file)
+
+function downloadCV() {
+  const a = document.createElement('a');
+  a.href = 'CV.docx';
+  a.download = 'CV.docx';
+  a.click();
+}
 </script>
+<button class="cv-fab" onclick="downloadCV()" title="Download CV">
+  <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+    <polyline points="7 10 12 15 17 10"/>
+    <line x1="12" y1="15" x2="12" y2="3"/>
+  </svg>
+  Download CV
+</button>
 </body>
 </html>
