@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — UI/UX & Graphic Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0A0A08;
+  --bg2:#111110;
+  --bg3:#181815;
+  --cream:#F0EBE1;
+  --cream2:#D9D0C4;
+  --rust:#C4522A;
+  --rust2:#E06030;
+  --gold:#C8962A;
+  --gold2:#E0AC38;
+  --sage:#4E7A62;
+  --muted:#6B6760;
+  --border:rgba(240,235,225,0.08);
+  --border2:rgba(240,235,225,0.15);
+  --r:4px;
+  --nav-bg:rgba(10,10,8,0.85);
+  --nav-bg-scrolled:rgba(10,10,8,.97);
+  --photo-card-bg:#181815;
+  --photo-gradient:rgba(10,10,8,.9);
+}
+
+/* ── LIGHT MODE ── */
+body.light{
+  --bg:#F7F4EF;
+  --bg2:#EEEAE3;
+  --bg3:#E4DED5;
+  --cream:#1A1714;
+  --cream2:#3D3830;
+  --rust:#B8431F;
+  --rust2:#C4522A;
+  --gold:#9A6E10;
+  --gold2:#B8830A;
+  --sage:#3A6050;
+  --muted:#7A746C;
+  --border:rgba(26,23,20,0.1);
+  --border2:rgba(26,23,20,0.18);
+  --nav-bg:rgba(247,244,239,0.88);
+  --nav-bg-scrolled:rgba(247,244,239,.98);
+  --photo-card-bg:#E4DED5;
+  --photo-gradient:rgba(247,244,239,.88);
+}
+body.light ::selection{background:var(--rust);color:white}
+body.light ::-webkit-scrollbar-track{background:var(--bg)}
+body.light .grid-lines{opacity:.3}
+body.light h1.display .name-line{
+  background:linear-gradient(135deg,#1A1714 40%,#3D3830);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+body.light .hbc1{background:radial-gradient(circle,rgba(196,82,42,.07),transparent 70%)}
+body.light .hbc2{background:radial-gradient(circle,rgba(200,150,42,.05),transparent 70%)}
+body.light .svc-num{color:rgba(26,23,20,.07)}
+body.light .skill-bar{background:linear-gradient(90deg,var(--rust),var(--gold2))}
+body.light .nav-links a:hover,body.light .nav-links a.active{color:var(--cream)}
+body.light .btn-o{color:var(--cream);border-color:var(--border2)}
+body.light .btn-o:hover{background:rgba(26,23,20,.06);border-color:var(--cream)}
+body.light .ah-item{background:rgba(26,23,20,.04);border-color:var(--border)}
+body.light .ah-item:hover{background:rgba(196,82,42,.06);border-color:rgba(196,82,42,.25)}
+body.light .tool-tag{background:rgba(26,23,20,.06);color:var(--muted);border-color:var(--border)}
+body.light .gh-input{background:rgba(26,23,20,.06);color:var(--cream)}
+body.light .cf-field input,body.light .cf-field textarea,body.light .cf-field select{
+  background:rgba(26,23,20,.06);color:var(--cream);
+}
+body.light .cf-field select option{background:var(--bg2);color:var(--cream)}
+body.light .cf-field input:focus,body.light .cf-field textarea:focus{background:rgba(196,82,42,.04)}
+body.light .proj-card{background:white;border-color:rgba(26,23,20,.12)}
+body.light .proj-card:hover{border-color:rgba(196,82,42,.3)}
+body.light .proj-link{background:rgba(26,23,20,.05);border-color:var(--border)}
+body.light .gh-profile-bar{background:white;border-color:rgba(26,23,20,.14)}
+body.light .edu-dot{border-color:var(--bg)}
+body.light .edu-card{background:white;border-color:rgba(26,23,20,.1)}
+body.light .cert-card{background:white;border-color:rgba(26,23,20,.1)}
+body.light .ci-icon{background:rgba(26,23,20,.05);border-color:var(--border2)}
+body.light .fsoc{background:rgba(26,23,20,.06);border-color:var(--border)}
+body.light .fsoc:hover{background:var(--rust);border-color:var(--rust);color:white}
+body.light .footer-links a:hover{color:var(--cream)}
+body.light .photo-caption h3{color:#1A1714}
+body.light .photo-caption p{color:rgba(26,23,20,.6)}
+body.light .stat-chip{background:white;border-color:rgba(26,23,20,.14)}
+body.light .upload-ring{border-color:rgba(196,82,42,.4)}
+body.light .upload-label strong{color:#1A1714}
+body.light .projects-empty{border-color:rgba(26,23,20,.15)}
+body.light .projects-empty strong{color:var(--cream2)}
+
+/* ── THEME TOGGLE BUTTON ── */
+.theme-toggle{
+  width:44px;height:24px;border-radius:100px;
+  background:rgba(240,235,225,.1);border:1px solid var(--border2);
+  position:relative;cursor:pointer;
+  transition:background .3s,border-color .3s;
+  flex-shrink:0;
+}
+body.light .theme-toggle{background:rgba(26,23,20,.1);border-color:rgba(26,23,20,.2)}
+.theme-toggle-knob{
+  position:absolute;top:3px;left:3px;
+  width:16px;height:16px;border-radius:50%;
+  background:var(--cream);
+  transition:transform .3s,background .3s;
+  display:flex;align-items:center;justify-content:center;
+  font-size:9px;line-height:1;
+}
+body.light .theme-toggle-knob{
+  transform:translateX(20px);
+  background:#1A1714;
+}
+.theme-toggle-knob::before{content:'🌙'}
+body.light .theme-toggle-knob::before{content:'☀️'}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:'Outfit',sans-serif;
+  background:var(--bg);
+  color:var(--cream);
+  overflow-x:hidden;
+  cursor:default;
+  transition:background .4s ease,color .4s ease;
+}
+*{transition:background-color .35s ease,border-color .35s ease,color .35s ease,box-shadow .35s ease}
+::selection{background:var(--rust);color:white}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--rust);border-radius:2px}
+
+/* ── CUSTOM CURSOR ── */
+#cursor{
+  position:fixed;width:10px;height:10px;
+  background:var(--rust);border-radius:50%;
+  pointer-events:none;z-index:9999;
+  transform:translate(-50%,-50%);
+  transition:width .2s,height .2s,background .2s;
+  mix-blend-mode:difference;
+}
+#cursor.big{width:40px;height:40px;background:var(--gold)}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.4rem 5rem;
+  background:var(--nav-bg);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  transition:padding .3s,background .4s;
+}
+nav.scrolled{padding:.9rem 5rem;background:var(--nav-bg-scrolled)}
+.nav-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.6rem;font-weight:700;
+  color:var(--cream);letter-spacing:-.02em;
+  text-decoration:none;
+}
+.nav-logo span{color:var(--rust)}
+.nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center}
+.nav-links a{
+  text-decoration:none;color:var(--muted);
+  font-size:.82rem;font-weight:500;letter-spacing:.1em;
+  text-transform:uppercase;transition:color .2s;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--cream)}
+.nav-hire{
+  background:var(--rust)!important;color:white!important;
+  padding:.5rem 1.4rem;border-radius:var(--r);
+  transition:background .2s!important;font-weight:600!important;
+}
+.nav-hire:hover{background:var(--rust2)!important}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-toggle span{display:block;width:24px;height:2px;background:var(--cream);border-radius:2px;transition:.3s}
+
+/* ── HERO ── */
+#home{
+  min-height:100vh;
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;padding:9rem 5rem 5rem;gap:5rem;
+  position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;pointer-events:none;overflow:hidden;
+}
+.hero-bg-circle{
+  position:absolute;border-radius:50%;
+  background:radial-gradient(circle,rgba(196,82,42,.12),transparent 70%);
+}
+.hbc1{width:700px;height:700px;top:-200px;right:-200px}
+.hbc2{width:400px;height:400px;bottom:-100px;left:-100px;background:radial-gradient(circle,rgba(200,150,42,.06),transparent 70%)}
+.grid-lines{
+  position:absolute;inset:0;
+  background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:80px 80px;opacity:.5;
+}
+
+.hero-text{position:relative;z-index:2}
+.hero-status{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:rgba(196,82,42,.1);border:1px solid rgba(196,82,42,.25);
+  color:var(--rust2);padding:.4rem 1rem;border-radius:100px;
+  font-size:.76rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:2rem;
+}
+.hero-status::before{
+  content:'';width:7px;height:7px;border-radius:50%;background:var(--rust2);
+  animation:blink 2s infinite;
+}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.4)}}
+
+h1.display{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3.2rem,5.5vw,5.5rem);
+  font-weight:700;line-height:1.0;
+  letter-spacing:-.04em;margin-bottom:.8rem;
+}
+h1.display em{font-style:italic;color:var(--rust2);display:block}
+h1.display .name-line{
+  display:block;
+  background:linear-gradient(135deg,var(--cream) 40%,var(--cream2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+
+.hero-desc{
+  color:var(--muted);font-size:1.02rem;line-height:1.75;
+  margin:1.8rem 0 2.2rem;max-width:480px;
+}
+.hero-tags{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.htag{
+  padding:.35rem .9rem;border-radius:var(--r);
+  font-size:.76rem;font-weight:600;letter-spacing:.06em;
+  border:1px solid;
+}
+.htag-r{border-color:rgba(196,82,42,.5);color:var(--rust2)}
+.htag-g{border-color:rgba(78,122,98,.5);color:#6DAF8C}
+.htag-o{border-color:rgba(200,150,42,.5);color:var(--gold2)}
+
+.hero-btns{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.btn-p{
+  background:var(--rust);color:white;
+  padding:.85rem 2rem;border-radius:var(--r);
+  font-size:.9rem;font-weight:600;letter-spacing:.04em;
+  text-decoration:none;transition:all .25s;display:inline-block;
+  border:1px solid var(--rust);
+}
+.btn-p:hover{background:var(--rust2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(196,82,42,.35)}
+.btn-o{
+  color:var(--cream);border:1px solid var(--border2);
+  padding:.85rem 2rem;border-radius:var(--r);
+  font-size:.9rem;font-weight:500;letter-spacing:.04em;
+  text-decoration:none;transition:all .25s;display:inline-block;
+}
+.btn-o:hover{border-color:var(--cream);background:rgba(240,235,225,.05)}
+
+/* ── PHOTO CARD ── */
+.hero-photo-side{
+  position:relative;z-index:2;display:flex;justify-content:center;
+}
+.photo-wrapper{
+  position:relative;width:400px;
+}
+.photo-card{
+  position:relative;width:100%;height:500px;
+  border-radius:8px;overflow:hidden;
+  border:1px solid var(--border2);
+  background:var(--photo-card-bg);
+}
+.photo-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 55%,var(--photo-gradient));
+  z-index:2;pointer-events:none;
+}
+#heroPhoto{
+  width:100%;height:100%;object-fit:cover;object-position:center top;
+  display:block;transition:transform .6s ease;
+}
+.photo-card:hover #heroPhoto{transform:scale(1.04)}
+.photo-caption{
+  position:absolute;bottom:1.5rem;left:1.5rem;right:1.5rem;z-index:4;
+}
+.photo-caption h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.4rem;font-weight:700;color:white;margin-bottom:.2rem;
+}
+.photo-caption p{color:rgba(255,255,255,.65);font-size:.82rem}
+
+.stat-chips{
+  position:absolute;right:-30px;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:.8rem;
+}
+.stat-chip{
+  background:var(--bg2);border:1px solid var(--border2);
+  border-radius:var(--r);padding:.8rem 1rem;text-align:center;
+  min-width:80px;
+}
+.stat-chip .n{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.8rem;font-weight:700;color:var(--gold2);line-height:1;
+}
+.stat-chip .l{font-size:.68rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+
+.frame-deco{
+  position:absolute;bottom:-20px;left:-20px;
+  width:120px;height:120px;
+  border-left:2px solid rgba(200,150,42,.4);
+  border-bottom:2px solid rgba(200,150,42,.4);
+  border-radius:0 0 0 8px;
+  pointer-events:none;
+}
+
+/* ── SECTION SHARED ── */
+section:not(#home){padding:7rem 5rem}
+.section-eyebrow{
+  font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--rust2);margin-bottom:.8rem;display:flex;align-items:center;gap:.6rem;
+}
+.section-eyebrow::before{content:'';width:24px;height:1px;background:var(--rust2)}
+.section-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,3.5vw,3.2rem);font-weight:700;
+  line-height:1.1;letter-spacing:-.03em;margin-bottom:.8rem;
+}
+.section-sub{color:var(--muted);line-height:1.75;max-width:540px;font-size:.97rem}
+
+/* ── ABOUT ── */
+#about{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:7rem;align-items:center;
+  background:var(--bg2);
+}
+.about-text .section-title span{color:var(--rust2);font-style:italic}
+.about-desc{color:var(--muted);line-height:1.8;margin:1.5rem 0 2rem;font-size:.97rem}
+.about-highlights{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+.ah-item{
+  padding:1.2rem;border-radius:var(--r);
+  background:rgba(240,235,225,.03);border:1px solid var(--border);
+  transition:border-color .2s,background .2s;
+}
+.ah-item:hover{border-color:rgba(196,82,42,.3);background:rgba(196,82,42,.05)}
+.ah-icon{font-size:1.4rem;margin-bottom:.6rem}
+.ah-title{font-weight:600;font-size:.9rem;margin-bottom:.2rem}
+.ah-sub{color:var(--muted);font-size:.78rem;line-height:1.5}
+.skills-panel{}
+.skill-row{margin-bottom:1.4rem}
+.skill-header{display:flex;justify-content:space-between;margin-bottom:.5rem}
+.skill-name{font-size:.85rem;font-weight:500;color:var(--cream2)}
+.skill-pct{font-size:.85rem;font-weight:700;color:var(--rust2)}
+.skill-track{height:2px;background:var(--border2);border-radius:1px;overflow:hidden}
+.skill-bar{height:100%;border-radius:1px;background:linear-gradient(90deg,var(--rust),var(--gold2));width:0;transition:width 1.4s cubic-bezier(.4,0,.2,1)}
+.freelance-badge{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:rgba(200,150,42,.1);border:1px solid rgba(200,150,42,.25);
+  color:var(--gold2);padding:.5rem 1rem;border-radius:var(--r);
+  font-size:.78rem;font-weight:600;margin-bottom:1.8rem;
+}
+
+/* ── SERVICES ── */
+#services{background:var(--bg)}
+.services-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4rem;flex-wrap:wrap;gap:2rem}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.svc-card{
+  background:var(--bg);padding:2.5rem 2rem;
+  position:relative;overflow:hidden;transition:background .3s;
+}
+.svc-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--rust),var(--gold2));
+  transform:scaleX(0);transform-origin:left;transition:transform .4s;
+}
+.svc-card:hover{background:var(--bg2)}
+.svc-card:hover::after{transform:scaleX(1)}
+.svc-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:4rem;font-weight:700;
+  color:rgba(240,235,225,.06);line-height:1;
+  margin-bottom:1.5rem;user-select:none;
+}
+.svc-icon{font-size:1.8rem;margin-bottom:1rem}
+.svc-title{font-size:1.1rem;font-weight:700;margin-bottom:.8rem;color:var(--cream)}
+.svc-desc{color:var(--muted);font-size:.86rem;line-height:1.7;margin-bottom:1.5rem}
+.svc-tools{display:flex;flex-wrap:wrap;gap:.4rem}
+.tool-tag{
+  font-size:.72rem;padding:.25rem .65rem;
+  background:rgba(240,235,225,.05);border-radius:100px;
+  color:var(--muted);border:1px solid var(--border);
+}
+
+/* ── PROJECTS ── */
+#projects{background:var(--bg2)}
+.projects-header{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  margin-bottom:3.5rem;flex-wrap:wrap;gap:1.5rem;
+}
+.projects-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
+  gap:1.8rem;
+}
+
+/* Project Card */
+.proj-card{
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:10px;overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:transform .3s,border-color .3s,box-shadow .3s;
+}
+.proj-card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(196,82,42,.4);
+  box-shadow:0 20px 48px rgba(0,0,0,.25);
+}
+body.light .proj-card{background:white;border-color:rgba(26,23,20,.1)}
+body.light .proj-card:hover{border-color:rgba(196,82,42,.35);box-shadow:0 20px 48px rgba(0,0,0,.1)}
+
+/* Project image area */
+.proj-img{
+  position:relative;width:100%;height:210px;
+  background:var(--bg2);overflow:hidden;flex-shrink:0;
+}
+body.light .proj-img{background:var(--bg3)}
+.proj-img img{
+  width:100%;height:100%;object-fit:cover;
+  display:block;transition:transform .5s;
+}
+.proj-card:hover .proj-img img{transform:scale(1.05)}
+
+/* Gradient overlay on image */
+.proj-img::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.55));
+  pointer-events:none;
+}
+
+/* Category badge on image */
+.proj-cat{
+  position:absolute;top:1rem;left:1rem;z-index:2;
+  font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  padding:.3rem .75rem;border-radius:100px;
+  background:rgba(10,10,8,.7);color:var(--rust2);
+  border:1px solid rgba(196,82,42,.35);
+  backdrop-filter:blur(6px);
+}
+
+/* Action links on image hover */
+.proj-img-links{
+  position:absolute;bottom:1rem;right:1rem;z-index:2;
+  display:flex;gap:.5rem;
+  opacity:0;transform:translateY(6px);
+  transition:opacity .3s,transform .3s;
+}
+.proj-card:hover .proj-img-links{opacity:1;transform:translateY(0)}
+.proj-img-link{
+  display:flex;align-items:center;gap:.4rem;
+  padding:.45rem .9rem;border-radius:var(--r);
+  font-size:.75rem;font-weight:600;text-decoration:none;
+  border:1px solid rgba(255,255,255,.2);
+  backdrop-filter:blur(8px);transition:background .2s,border-color .2s;
+}
+.pil-live{background:var(--rust);color:white;border-color:var(--rust)}
+.pil-live:hover{background:var(--rust2)}
+.pil-src{background:rgba(255,255,255,.1);color:white}
+.pil-src:hover{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.4)}
+.proj-img-link svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0}
+
+/* Card body */
+.proj-body{padding:1.5rem;display:flex;flex-direction:column;gap:.7rem;flex:1}
+.proj-head{display:flex;justify-content:space-between;align-items:flex-start;gap:.8rem}
+.proj-name{
+  font-weight:700;font-size:1.05rem;color:var(--cream);
+  line-height:1.2;
+}
+body.light .proj-name{color:#1A1714}
+.proj-year{
+  font-size:.72rem;font-weight:600;color:var(--muted);
+  white-space:nowrap;padding-top:.1rem;
+}
+.proj-desc{color:var(--muted);font-size:.84rem;line-height:1.65;flex:1}
+.proj-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.3rem}
+.proj-tag{
+  font-size:.7rem;font-weight:600;padding:.22rem .65rem;
+  border-radius:100px;border:1px solid var(--border2);
+  color:var(--muted);
+}
+body.light .proj-tag{border-color:rgba(26,23,20,.15)}
+
+/* Card footer */
+.proj-foot{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1rem 1.5rem;
+  border-top:1px solid var(--border);
+  flex-wrap:wrap;gap:.5rem;
+}
+body.light .proj-foot{border-top-color:rgba(26,23,20,.08)}
+.proj-foot-links{display:flex;gap:.6rem}
+.pfl{
+  display:inline-flex;align-items:center;gap:.35rem;
+  font-size:.78rem;font-weight:600;text-decoration:none;
+  color:var(--rust2);transition:color .2s;
+}
+.pfl:hover{color:var(--gold2)}
+.pfl svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0}
+.proj-foot-type{
+  font-size:.7rem;font-weight:600;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.08em;
+}
+
+/* ── EDUCATION ── */
+#education{background:var(--bg)}
+.edu-timeline{margin-top:3.5rem;display:flex;flex-direction:column;gap:0}
+.edu-item{
+  display:grid;grid-template-columns:80px 1fr;
+  gap:2rem;align-items:stretch;
+}
+.edu-line{
+  display:flex;flex-direction:column;align-items:center;
+  position:relative;
+}
+.edu-dot{
+  width:14px;height:14px;border-radius:50%;
+  background:var(--rust);border:2px solid var(--bg);
+  box-shadow:0 0 0 3px rgba(196,82,42,.3);
+  flex-shrink:0;margin-top:1.8rem;z-index:1;
+}
+.edu-connector{
+  flex:1;width:1px;background:linear-gradient(var(--rust2),transparent);
+  margin-top:4px;
+}
+.edu-item:last-child .edu-connector{display:none}
+.edu-card{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:8px;padding:1.8rem 2rem;margin-bottom:1.5rem;
+  transition:border-color .3s;
+}
+.edu-card:hover{border-color:rgba(196,82,42,.3)}
+.edu-label{
+  font-size:.72rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.12em;color:var(--rust2);margin-bottom:.8rem;
+}
+.edu-deg{font-size:1.1rem;font-weight:700;color:var(--cream);margin-bottom:.3rem}
+.edu-inst{color:var(--muted);font-size:.88rem;margin-bottom:.8rem}
+.edu-badge-row{display:flex;gap:.5rem;flex-wrap:wrap}
+.ebadge{
+  font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+  padding:.25rem .75rem;border-radius:100px;
+}
+.eb-rust{background:rgba(196,82,42,.15);color:var(--rust2);border:1px solid rgba(196,82,42,.25)}
+.eb-gold{background:rgba(200,150,42,.12);color:var(--gold2);border:1px solid rgba(200,150,42,.2)}
+.eb-sage{background:rgba(78,122,98,.15);color:#6DAF8C;border:1px solid rgba(78,122,98,.25)}
+
+/* ── CERTIFICATES ── */
+#certificates{background:var(--bg2)}
+.certs-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:1.5rem;margin-top:3rem;
+}
+.cert-card{
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:8px;padding:2.2rem;
+  position:relative;overflow:hidden;
+  transition:border-color .3s,transform .3s;
+}
+.cert-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--gold),var(--rust));
+}
+.cert-card:hover{border-color:rgba(200,150,42,.3);transform:translateY(-3px)}
+.cert-seal{
+  width:56px;height:56px;border-radius:50%;
+  background:rgba(200,150,42,.1);border:2px solid rgba(200,150,42,.25);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.6rem;margin-bottom:1.5rem;
+}
+.cert-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.3rem;font-weight:700;color:var(--cream);margin-bottom:.4rem;
+}
+.cert-issuer{color:var(--gold2);font-size:.82rem;font-weight:600;margin-bottom:.8rem}
+.cert-desc{color:var(--muted);font-size:.84rem;line-height:1.65}
+
+/* ── CONTACT ── */
+#contact{
+  background:var(--bg);
+  display:grid;grid-template-columns:1fr 1fr;gap:7rem;align-items:start;
+}
+.contact-info{display:flex;flex-direction:column;gap:1.8rem;margin-top:2rem}
+.ci-item{display:flex;gap:1.2rem;align-items:center}
+.ci-icon{
+  width:48px;height:48px;border-radius:var(--r);
+  background:rgba(240,235,225,.04);border:1px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;
+}
+.ci-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.2rem}
+.ci-val{color:var(--cream);font-size:.95rem;font-weight:500}
+.contact-form{display:flex;flex-direction:column;gap:1.2rem;margin-top:2rem}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.cf-field{display:flex;flex-direction:column;gap:.4rem}
+.cf-field label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.cf-field input,.cf-field textarea,.cf-field select{
+  background:rgba(240,235,225,.04);
+  border:1px solid var(--border2);
+  border-radius:var(--r);color:var(--cream);
+  font-family:'Outfit',sans-serif;font-size:.9rem;
+  padding:.8rem 1rem;outline:none;resize:none;
+  transition:border-color .2s,background .2s;
+}
+.cf-field input::placeholder,.cf-field textarea::placeholder{color:var(--muted)}
+.cf-field input:focus,.cf-field textarea:focus{border-color:var(--rust2);background:rgba(196,82,42,.03)}
+.cf-field select option{background:var(--bg2);color:var(--cream)}
+.send-btn{
+  background:var(--rust);color:white;border:none;
+  padding:1rem 2rem;border-radius:var(--r);
+  font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;
+  cursor:pointer;transition:all .25s;align-self:flex-start;
+}
+.send-btn:hover{background:var(--rust2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(196,82,42,.3)}
+.send-btn.sent{background:var(--sage)}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--bg2);padding:3rem 5rem;
+  border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;
+}
+.footer-left .fl-brand{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.4rem;font-weight:700;color:var(--cream);margin-bottom:.4rem;
+}
+.footer-left .fl-brand span{color:var(--rust)}
+.footer-left p{color:var(--muted);font-size:.82rem}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{color:var(--muted);text-decoration:none;font-size:.82rem;transition:color .2s}
+.footer-links a:hover{color:var(--cream)}
+.footer-socials{display:flex;gap:.7rem}
+.fsoc{
+  width:36px;height:36px;border-radius:var(--r);
+  background:rgba(240,235,225,.04);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;color:var(--muted);font-size:.78rem;font-weight:700;
+  transition:background .2s,border-color .2s,color .2s;
+}
+.fsoc:hover{background:var(--rust);border-color:var(--rust);color:white}
+
+/* ── REVEAL ANIMATIONS ── */
+.reveal,.reveal-l,.reveal-r{opacity:0;transition:opacity .75s ease,transform .75s ease}
+.reveal{transform:translateY(40px)}
+.reveal-l{transform:translateX(-40px)}
+.reveal-r{transform:translateX(40px)}
+.reveal.vis,.reveal-l.vis,.reveal-r.vis{opacity:1;transform:none}
+.stagger-1{transition-delay:.1s}.stagger-2{transition-delay:.2s}.stagger-3{transition-delay:.3s}.stagger-4{transition-delay:.4s}
+
+/* ── MOBILE NAV ── */
+@media(max-width:900px){
+  nav{padding:1rem 2rem}
+  nav.scrolled{padding:.8rem 2rem}
+  .nav-links{
+    display:none;flex-direction:column;gap:0;
+    position:fixed;top:0;left:0;right:0;bottom:0;
+    background:var(--bg);padding:5rem 2rem 2rem;
+    z-index:99;
+  }
+  .nav-links.open{display:flex}
+  .nav-links li{border-bottom:1px solid var(--border);padding:1rem 0}
+  .nav-links a{font-size:1.1rem}
+  .nav-toggle{display:flex;z-index:101}
+  #home{grid-template-columns:1fr;padding:7rem 2rem 4rem;gap:3rem}
+  .hero-photo-side{order:-1}
+  .photo-wrapper{width:100%;max-width:340px}
+  .stat-chips{right:-15px;top:auto;bottom:-20px;transform:none;flex-direction:row}
+  section:not(#home){padding:5rem 2rem}
+  #about,#contact{grid-template-columns:1fr;gap:3rem}
+  .services-grid{grid-template-columns:1fr}
+  .certs-grid{grid-template-columns:1fr}
+  .about-highlights{grid-template-columns:1fr}
+  footer{flex-direction:column;padding:2rem;text-align:center}
+  .footer-links{justify-content:center}
+  .footer-socials{justify-content:center}
+}
+
+/* ── LOADING SPINNER ── */
+.spinner{
+  width:24px;height:24px;border-radius:50%;
+  border:2px solid rgba(240,235,225,.1);border-top-color:var(--rust2);
+  animation:spin .7s linear infinite;display:none;
+}
+.spinner.active{display:block}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* lang colors */
+.lang-js{background:#F7DF1E}.lang-ts{background:#3178C6}.lang-py{background:#3572A5}
+.lang-html{background:#E34F26}.lang-css{background:#563D7C}.lang-ruby{background:#701516}
+.lang-go{background:#00ADD8}.lang-rust{background:#DEA584}.lang-java{background:#B07219}
+.lang-cpp{background:#F34B7D}.lang-cs{background:#178600}.lang-php{background:#4F5D95}
+.lang-swift{background:#FA7343}.lang-kotlin{background:#A97BFF}.lang-dart{background:#00B4AB}
+.lang-default{background:#8C8278}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#home" class="nav-logo">port<span>folio</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#certificates">Certs</a></li>
+    <li><a href="#contact" class="nav-hire">Hire Me</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:1rem">
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle light/dark mode" aria-label="Toggle theme">
+      <div class="theme-toggle-knob"></div>
+    </button>
+    <div class="nav-toggle" id="navToggle" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+  <div class="hero-bg">
+    <div class="grid-lines"></div>
+    <div class="hero-bg-circle hbc1"></div>
+    <div class="hero-bg-circle hbc2"></div>
+  </div>
+
+  <div class="hero-text">
+    <div class="hero-status">Available for freelance</div>
+    <h1 class="display">
+      <span class="name-line">Creative</span>
+      <em>Designer &</em>
+      <span class="name-line">Developer</span>
+    </h1>
+    <p class="hero-desc">
+      I blend software development expertise with visual storytelling — crafting interfaces, brand identities, and digital experiences that are both beautiful and functional.
+    </p>
+    <div class="hero-tags">
+      <span class="htag htag-r">UI/UX Design</span>
+      <span class="htag htag-g">Graphic Design</span>
+      <span class="htag htag-o">Software Dev</span>
+      <span class="htag htag-r">Freelancer</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-p">View My Work</a>
+      <a href="#contact" class="btn-o">Let's Talk →</a>
+    </div>
+  </div>
+
+  <div class="hero-photo-side">
+    <div class="photo-wrapper">
+      <div class="photo-card" id="photoCard">
+        <!--
+          ═══════════════════════════════════════════════════
+          👤 YOUR PHOTO — Replace the src below with your own
+          image file path or URL. Example:
+            src="photo.jpg"          (if in same folder)
+            src="images/me.png"      (in a subfolder)
+            src="https://..."        (hosted online)
+          ═══════════════════════════════════════════════════
+        -->
+        <img
+          id="heroPhoto"
+          src="profile.jpg"
+          alt="Profile photo"
+        >
+        <div class="photo-caption">
+          <h3 id="photoCaptionName">MUGEMANA Lorraine</h3>
+          <p>UI/UX Designer · Graphic Designer · Developer</p>
+        </div>
+      </div>
+      <div class="stat-chips">
+        <div class="stat-chip">
+          <div class="n">3+</div>
+          <div class="l">Years</div>
+        </div>
+        <div class="stat-chip">
+          <div class="n">2</div>
+          <div class="l">Certs</div>
+        </div>
+      </div>
+      <div class="frame-deco"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-text reveal-l">
+    <div class="section-eyebrow">About Me</div>
+    <h2 class="section-title">Where <span>Creativity</span><br>Meets Code</h2>
+    <div class="freelance-badge">⚡ Open to Freelance Projects</div>
+    <p class="about-desc">
+      I'm a passionate freelancer with a solid education in software development and a deep love for visual design. My unique background lets me think like a developer and design like an artist — bridging the gap between form and function to deliver exceptional digital experiences.
+    </p>
+    <div class="about-highlights">
+      <div class="ah-item">
+        <div class="ah-icon">🎨</div>
+        <div class="ah-title">UI/UX Design</div>
+        <div class="ah-sub">User-centered design that converts</div>
+      </div>
+      <div class="ah-item">
+        <div class="ah-icon">✏️</div>
+        <div class="ah-title">Graphic Design</div>
+        <div class="ah-sub">Brands that stand out and inspire</div>
+      </div>
+      <div class="ah-item">
+        <div class="ah-icon">💻</div>
+        <div class="ah-title">Development</div>
+        <div class="ah-sub">Code that brings design to life</div>
+      </div>
+      <div class="ah-item">
+        <div class="ah-icon">🚀</div>
+        <div class="ah-title">Freelance</div>
+        <div class="ah-sub">Flexible, reliable, deadline-driven</div>
+      </div>
+    </div>
+  </div>
+  <div class="skills-panel reveal-r">
+    <div class="section-eyebrow" style="color:var(--gold2)">My Skills</div>
+    <div class="skill-row">
+      <div class="skill-header"><span class="skill-name">UI/UX Design</span><span class="skill-pct">92%</span></div>
+      <div class="skill-track"><div class="skill-bar" data-w="92"></div></div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-header"><span class="skill-name">Graphic Design</span><span class="skill-pct">88%</span></div>
+      <div class="skill-track"><div class="skill-bar" data-w="88"></div></div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-header"><span class="skill-name">Software Development</span><span class="skill-pct">80%</span></div>
+      <div class="skill-track"><div class="skill-bar" data-w="80"></div></div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-header"><span class="skill-name">Brand Identity</span><span class="skill-pct">85%</span></div>
+      <div class="skill-track"><div class="skill-bar" data-w="85"></div></div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-header"><span class="skill-name">Prototyping & Wireframing</span><span class="skill-pct">90%</span></div>
+      <div class="skill-track"><div class="skill-bar" data-w="90"></div></div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-header"><span class="skill-name">Typography & Layout</span><span class="skill-pct">87%</span></div>
+      <div class="skill-track"><div class="skill-bar" data-w="87"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-top reveal">
+    <div>
+      <div class="section-eyebrow">What I Do</div>
+      <h2 class="section-title">My Services</h2>
+    </div>
+    <p class="section-sub" style="font-size:.9rem;">
+      From concept to launch — I bring your ideas to life with design and code.
+    </p>
+  </div>
+  <div class="services-grid reveal">
+    <div class="svc-card">
+      <div class="svc-num">01</div>
+      <div class="svc-icon">🖥️</div>
+      <div class="svc-title">UI/UX Design</div>
+      <p class="svc-desc">Designing intuitive, accessible, and visually stunning interfaces grounded in research, user empathy, and modern design systems.</p>
+      <div class="svc-tools">
+        <span class="tool-tag">Figma</span><span class="tool-tag">Adobe XD</span><span class="tool-tag">Prototyping</span><span class="tool-tag">Wireframing</span><span class="tool-tag">User Research</span>
+      </div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-num">02</div>
+      <div class="svc-icon">🎨</div>
+      <div class="svc-title">Graphic Design</div>
+      <p class="svc-desc">Crafting brand identities, logos, print materials, social media graphics, and visual assets that make a lasting impression.</p>
+      <div class="svc-tools">
+        <span class="tool-tag">Illustrator</span><span class="tool-tag">Photoshop</span><span class="tool-tag">Canva</span><span class="tool-tag">InDesign</span><span class="tool-tag">Branding</span>
+      </div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-num">03</div>
+      <div class="svc-icon">⚙️</div>
+      <div class="svc-title">Software Development</div>
+      <p class="svc-desc">Building functional, clean, and scalable software solutions using modern technologies and development best practices.</p>
+      <div class="svc-tools">
+        <span class="tool-tag">HTML/CSS</span><span class="tool-tag">JavaScript</span><span class="tool-tag">React</span><span class="tool-tag">Python</span><span class="tool-tag">Git</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="projects-header reveal">
+    <div>
+      <div class="section-eyebrow">My Work</div>
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-sub" style="margin-top:.5rem">Each card below is fully editable — swap the image, title, description and links to your own projects hosted on Vercel, Netlify or anywhere else.</p>
+    </div>
+  </div>
+
+  <div class="projects-grid reveal">
+
+    <!-- PROJECT 1 -->
+    <div class="proj-card">
+      <div class="proj-img">
+        <img src="figma.jpg" alt="UI/UX Project">
+        <span class="proj-cat">UI/UX Design</span>
+        <div class="proj-img-links">
+          <a href="https://www.figma.com/proto/Nhc9T3MUXo9nIdqr01CAyr/Untitled?node-id=0-1&t=LSOJ0WQvv451b3tq-1" target="_blank" class="proj-img-link pil-live">
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live Demo
+          </a>
+          <a href="https://github.com/your-username/project" target="_blank" class="proj-img-link pil-src">
+            <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            Source
+          </a>
+        </div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-head">
+          <div class="proj-name">Dashboard UI Redesign</div>
+          <div class="proj-year">2024</div>
+        </div>
+        <div class="proj-desc">A complete design of Sos technical high school project prototype.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Figma</span>
+          
+        </div>
+      </div>
+      <div class="proj-foot">
+        <div class="proj-foot-links">
+          <a href="" target="_blank" class="pfl">
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live on Figma
+          </a>
+
+        </div>
+        <span class="proj-foot-type">Web Prototype</span>
+      </div>
+    </div>
+
+  
+
+    <!-- PROJECT 3 -->
+    <div class="proj-card">
+      <div class="proj-img">
+        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80" alt="Web App">
+        <span class="proj-cat">Development</span>
+        <div class="proj-img-links">
+          <a href="https://your-project.vercel.app" target="_blank" class="proj-img-link pil-live">
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live Demo
+          </a>
+          <a href="https://github.com/your-username/project" target="_blank" class="proj-img-link pil-src">
+            <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            Source
+          </a>
+        </div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-head">
+          <div class="proj-name">Portfolio Website</div>
+          <div class="proj-year">2025</div>
+        </div>
+        <div class="proj-desc">A fully responsive personal portfolio site built from scratch with HTML, CSS & JavaScript. Dark/light mode, animations and GitHub integration.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">HTML/CSS</span>
+          <span class="proj-tag">JavaScript</span>
+          <span class="proj-tag">Vercel</span>
+        </div>
+      </div>
+      <div class="proj-foot">
+        <div class="proj-foot-links">
+          <a href="https://your-project.vercel.app" target="_blank" class="pfl">
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live on Vercel
+          </a>
+          <a href="https://github.com/your-username/project" target="_blank" class="pfl">
+            <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+        </div>
+        <span class="proj-foot-type">Website</span>
+      </div>
+    </div>
+
+    <!-- PROJECT 4 -->
+    <div class="proj-card">
+      <div class="proj-img">
+        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80" alt="Mobile App">
+        <span class="proj-cat">UI/UX Design</span>
+        <div class="proj-img-links">
+          <a href="https://your-project.vercel.app" target="_blank" class="proj-img-link pil-live">
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            View Prototype
+          </a>
+        </div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-head">
+          <div class="proj-name">Mobile App UI Kit</div>
+          <div class="proj-year">2024</div>
+        </div>
+        <div class="proj-desc">A comprehensive UI kit for a fintech mobile app — onboarding flows, dashboards, transaction screens, and a full component library.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Figma</span>
+          <span class="proj-tag">Mobile</span>
+          <span class="proj-tag">Fintech</span>
+        </div>
+      </div>
+      <div class="proj-foot">
+        <div class="proj-foot-links">
+          <a href="https://your-project.vercel.app" target="_blank" class="pfl">
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Figma Prototype
+          </a>
+        </div>
+        <span class="proj-foot-type">Mobile UI</span>
+      </div>
+    </div>
+
+    <!-- PROJECT 5 -->
+    <div class="proj-card">
+      <div class="proj-img">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Web Design">
+        <span class="proj-cat">Development</span>
+        <div class="proj-img-links">
+          <a href="https://your-project.vercel.app" target="_blank" class="proj-img-link pil-live">
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live Demo
+          </a>
+          <a href="https://github.com/your-username/project" target="_blank" class="proj-img-link pil-src">
+            <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            Source
+          </a>
+        </div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-head">
+          <div class="proj-name">Analytics Web App</div>
+          <div class="proj-year">2025</div>
+        </div>
+        <div class="proj-desc">A data visualization web app for tracking business KPIs in real time, with interactive charts and exportable PDF reports.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">React</span>
+          <span class="proj-tag">Chart.js</span>
+          <span class="proj-tag">Node.js</span>
+        </div>
+      </div>
+      <div class="proj-foot">
+        <div class="proj-foot-links">
+          <a href="https://your-project.vercel.app" target="_blank" class="pfl">
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live on Vercel
+          </a>
+          <a href="https://github.com/your-username/project" target="_blank" class="pfl">
+            <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+        </div>
+        <span class="proj-foot-type">Web App</span>
+      </div>
+    </div>
+
+    <!-- PROJECT 6 -->
+    <div class="proj-card">
+      <div class="proj-img">
+        <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800&q=80" alt="Social Media Design">
+        <span class="proj-cat">Graphic Design</span>
+        <div class="proj-img-links">
+          <a href="https://your-project.vercel.app" target="_blank" class="proj-img-link pil-live">
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            View Project
+          </a>
+        </div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-head">
+          <div class="proj-name">Social Media Campaign</div>
+          <div class="proj-year">2025</div>
+        </div>
+        <div class="proj-desc">A complete social media design campaign for a fashion brand — 30+ posts, stories, highlight covers, and animated reels assets.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Photoshop</span>
+          <span class="proj-tag">Canva</span>
+          <span class="proj-tag">Social Media</span>
+        </div>
+      </div>
+      <div class="proj-foot">
+        <div class="proj-foot-links">
+          <a href="https://your-project.vercel.app" target="_blank" class="pfl">
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            View on Behance
+          </a>
+        </div>
+        <span class="proj-foot-type">Campaign</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="reveal">
+    <div class="section-eyebrow">Background</div>
+    <h2 class="section-title">Education</h2>
+    <p class="section-sub">The academic journey that shaped my technical and creative foundation.</p>
+  </div>
+  <div class="edu-timeline reveal">
+    <div class="edu-item">
+      <div class="edu-line"><div class="edu-dot"></div><div class="edu-connector"></div></div>
+      <div class="edu-card">
+        <div class="edu-label">Core Degree</div>
+        <div class="edu-deg">Education in Software Development</div>
+        <div class="edu-inst">Software Engineering Program · College / University</div>
+        <div class="edu-badge-row">
+          <span class="ebadge eb-rust">Software Dev</span>
+          <span class="ebadge eb-gold">Programming</span>
+        </div>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-line"><div class="edu-dot"></div><div class="edu-connector"></div></div>
+      <div class="edu-card">
+        <div class="edu-label">Design Specialization</div>
+        <div class="edu-deg">UI/UX Design Training</div>
+        <div class="edu-inst">Interaction Design · Prototyping · Design Systems</div>
+        <div class="edu-badge-row">
+          <span class="ebadge eb-sage">UX Research</span>
+          <span class="ebadge eb-rust">Figma</span>
+        </div>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-line"><div class="edu-dot"></div><div class="edu-connector"></div></div>
+      <div class="edu-card">
+        <div class="edu-label">Creative Arts</div>
+        <div class="edu-deg">Graphic Design Studies</div>
+        <div class="edu-inst">Visual Communication · Brand Identity · Typography</div>
+        <div class="edu-badge-row">
+          <span class="ebadge eb-gold">Branding</span>
+          <span class="ebadge eb-rust">Illustration</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATES -->
+<section id="certificates">
+  <div class="reveal">
+    <div class="section-eyebrow">Recognition</div>
+    <h2 class="section-title">Certificates &<br>Achievements</h2>
+    <p class="section-sub">Proud recognition of dedication, leadership, and excellence.</p>
+  </div>
+  <div class="certs-grid reveal">
+    <div class="cert-card">
+      <div class="cert-seal">🏅</div>
+      <div class="cert-title">iLead Program Certificate</div>
+      <div class="cert-issuer">iLead Initiative</div>
+      <p class="cert-desc">Completed the prestigious iLead leadership and innovation program, developing strategic thinking, team leadership, and entrepreneurial skills required for the modern world.</p>
+    </div>
+    <div class="cert-card">
+      <div class="cert-seal">⭐</div>
+      <div class="cert-title">First Lady Certificate of Recognition</div>
+      <div class="cert-issuer">Office of the First Lady</div>
+      <p class="cert-desc">Honored with a certificate from the First Lady in recognition of outstanding excellence and meaningful contribution in my professional field and community.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="reveal-l">
+    <div class="section-eyebrow">Get In Touch</div>
+    <h2 class="section-title">Let's Work<br>Together</h2>
+    <p class="section-sub">Ready to bring your next project to life? I'm open to freelance projects, collaborations, and exciting opportunities.</p>
+    <div class="contact-info">
+      <div class="ci-item"><div class="ci-icon">📧</div><div><div class="ci-label">Email</div><div class="ci-val">your@email.com</div></div></div>
+      <div class="ci-item"><div class="ci-icon">📱</div><div><div class="ci-label">Phone</div><div class="ci-val">+250 7XX XXX XXX</div></div></div>
+      <div class="ci-item"><div class="ci-icon">📍</div><div><div class="ci-label">Location</div><div class="ci-val">Kigali, Rwanda</div></div></div>
+      <div class="ci-item"><div class="ci-icon">🌐</div><div><div class="ci-label">GitHub</div><div class="ci-val" id="contactGhLink">github.com/your-username</div></div></div>
+    </div>
+  </div>
+  <div class="reveal-r">
+    <div class="section-eyebrow" style="visibility:hidden">Form</div>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;margin-bottom:0">Send a Message</h3>
+    <div class="contact-form">
+      <div class="cf-row">
+        <div class="cf-field"><label>First Name</label><input type="text" placeholder="Jane"></div>
+        <div class="cf-field"><label>Last Name</label><input type="text" placeholder="Doe"></div>
+      </div>
+      <div class="cf-field"><label>Email Address</label><input type="email" placeholder="jane@example.com"></div>
+      <div class="cf-field">
+        <label>Service Needed</label>
+        <select><option>UI/UX Design</option><option>Graphic Design</option><option>Software Development</option><option>Brand Identity</option><option>Other</option></select>
+      </div>
+      <div class="cf-field"><label>Message</label><textarea rows="5" placeholder="Tell me about your project, timeline, and budget..."></textarea></div>
+      <button class="send-btn" id="sendBtn" onclick="sendMsg()">Send Message</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <div class="fl-brand">port<span>folio</span></div>
+    <p>UI/UX Designer · Graphic Designer · Software Developer · Kigali, Rwanda</p>
+  </div>
+  <div class="footer-links">
+    <a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+  </div>
+  <div class="footer-socials">
+    <a href="#" id="footerGh" target="_blank" class="fsoc" title="GitHub">GH</a>
+    <a href="#" class="fsoc" title="LinkedIn">in</a>
+    <a href="#" class="fsoc" title="Behance">Be</a>
+    <a href="#" class="fsoc" title="Dribbble">Dr</a>
+  </div>
+</footer>
+
+<script>
+// ── THEME TOGGLE ──
+function toggleTheme() {
+  document.body.classList.toggle('light');
+  localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+}
+// Load saved theme
+(function(){
+  const saved = localStorage.getItem('theme');
+  if (saved === 'light') document.body.classList.add('light');
+})();
+
+// ── CURSOR ──
+const cur = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cur.style.left = e.clientX + 'px';
+  cur.style.top = e.clientY + 'px';
+});
+document.querySelectorAll('a,button,.svc-card,.cert-card,.proj-card').forEach(el => {
+  el.addEventListener('mouseenter', () => cur.classList.add('big'));
+  el.addEventListener('mouseleave', () => cur.classList.remove('big'));
+});
+
+// ── NAV ──
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+  highlightNav();
+});
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+});
+function highlightNav() {
+  const secs = ['home','about','services','projects','education','certificates','contact'];
+  let cur = 'home';
+  secs.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 120) cur = id;
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+  });
+}
+
+// ── SCROLL REVEAL ──
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('vis');
+      e.target.querySelectorAll('.skill-bar').forEach(b => {
+        b.style.width = b.dataset.w + '%';
+      });
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el => revObs.observe(el));
+
+// ── GITHUB ──
+const langColors = {
+  JavaScript:'#F7DF1E',TypeScript:'#3178C6',Python:'#3572A5',
+  HTML:'#E34F26',CSS:'#563D7C',Ruby:'#701516',Go:'#00ADD8',
+  Rust:'#DEA584',Java:'#B07219','C++':'#F34B7D','C#':'#178600',
+  PHP:'#4F5D95',Swift:'#FA7343',Kotlin:'#A97BFF',Dart:'#00B4AB',
+  Vue:'#41B883',Shell:'#89E051',Jupyter:'#DA5B0B',
+};
+
+function timeSince(dateStr) {
+  const d = new Date(dateStr), n = new Date();
+  const diff = Math.floor((n - d) / 1000);
+  if (diff < 60) return 'just now';
+  if (diff < 3600) return Math.floor(diff/60) + 'm ago';
+  if (diff < 86400) return Math.floor(diff/3600) + 'h ago';
+  if (diff < 2592000) return Math.floor(diff/86400) + 'd ago';
+  if (diff < 31536000) return Math.floor(diff/2592000) + 'mo ago';
+  return Math.floor(diff/31536000) + 'y ago';
+}
+
+async function loadGitHub() {
+  const username = document.getElementById('ghUsername').value.trim();
+  if (!username) { setStatus('Please enter a GitHub username', 'error'); return; }
+
+  const btn = document.getElementById('ghLoadBtn');
+  const spinner = document.getElementById('ghSpinner');
+  btn.disabled = true; spinner.classList.add('active');
+  setStatus('Fetching from GitHub...');
+
+  try {
+    const [userRes, reposRes] = await Promise.all([
+      fetch(`https://api.github.com/users/${username}`),
+      fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=12`)
+    ]);
+
+    if (!userRes.ok) throw new Error(userRes.status === 404 ? 'User not found' : 'GitHub API error');
+    const user = await userRes.json();
+    const repos = await reposRes.json();
+
+    // Profile bar
+    document.getElementById('ghName').textContent = user.name || user.login;
+    document.getElementById('ghBio').textContent = user.bio || 'GitHub Developer';
+    document.getElementById('ghRepoCount').textContent = user.public_repos;
+    document.getElementById('ghFollowers').textContent = user.followers;
+    document.getElementById('ghFollowing').textContent = user.following;
+    document.getElementById('ghProfileLink').href = user.html_url;
+    const avImg = document.getElementById('ghAvatarImg');
+    avImg.src = user.avatar_url;
+    avImg.style.display = 'block';
+    document.getElementById('ghProfileBar').style.display = 'flex';
+
+    // Update contact + footer
+    document.getElementById('contactGhLink').textContent = `github.com/${username}`;
+    document.getElementById('footerGh').href = user.html_url;
+
+    // Render repos
+    const grid = document.getElementById('projectsGrid');
+    if (!repos.length) {
+      grid.innerHTML = '<div class="projects-empty"><strong>No public repositories</strong><p>This account has no public repos yet.</p></div>';
+    } else {
+      grid.innerHTML = repos.filter(r => !r.fork).map(r => `
+        <div class="proj-card">
+          <div class="proj-card-top">
+            <div class="proj-icon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 3h6l4 4h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/>
+              </svg>
+            </div>
+            <div class="proj-links">
+              <a href="${r.html_url}" target="_blank" class="proj-link" title="View on GitHub">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              </a>
+              ${r.homepage ? `<a href="${r.homepage}" target="_blank" class="proj-link" title="Live Demo"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>` : ''}
+            </div>
+          </div>
+          <div>
+            <div class="proj-name">${r.name}</div>
+            <div class="proj-desc">${r.description || 'No description provided.'}</div>
+          </div>
+          <div class="proj-meta">
+            ${r.language ? `<div class="proj-lang"><span class="lang-dot" style="background:${langColors[r.language]||'#8C8278'}"></span>${r.language}</div>` : ''}
+            <div class="proj-stars"><svg viewBox="0 0 16 16"><path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/></svg>${r.stargazers_count}</div>
+            <div class="proj-forks"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9v1a2 2 0 01-2 2H8a2 2 0 01-2-2V9"/><line x1="12" y1="12" x2="12" y2="15"/></svg>${r.forks_count}</div>
+            <div class="proj-updated">${timeSince(r.updated_at)}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    setStatus(`Loaded ${repos.filter(r=>!r.fork).length} repositories for @${username}`);
+  } catch (err) {
+    setStatus(err.message || 'Failed to load GitHub data', 'error');
+    document.getElementById('projectsGrid').innerHTML = `<div class="projects-empty"><strong>Could not load projects</strong><p>${err.message}</p></div>`;
+  } finally {
+    btn.disabled = false;
+    spinner.classList.remove('active');
+  }
+}
+
+function setStatus(msg, type) {
+  const el = document.getElementById('ghStatus');
+  el.textContent = msg;
+  el.style.color = type === 'error' ? 'var(--rust2)' : 'var(--muted)';
+}
+
+// Enter key for GitHub input
+document.getElementById('ghUsername').addEventListener('keydown', e => {
+  if (e.key === 'Enter') loadGitHub();
+});
+
+// ── CONTACT FORM ──
+function sendMsg() {
+  const btn = document.getElementById('sendBtn');
+  btn.textContent = 'Message Sent ✓';
+  btn.classList.add('sent');
+  setTimeout(() => { btn.textContent = 'Send Message'; btn.classList.remove('sent'); }, 3000);
+}
+
+// ── SMOOTH HERO PARALLAX ──
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  document.querySelector('.hbc1').style.transform = `translateY(${y * .12}px)`;
+  document.querySelector('.hbc2').style.transform = `translateY(${-y * .08}px)`;
+});
+</script>
+</body>
+</html>
